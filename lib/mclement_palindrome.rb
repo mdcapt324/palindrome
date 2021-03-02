@@ -1,8 +1,16 @@
-# frozen_string_literal: true
+require "mclement_palindrome/version"
 
-require_relative "mclement_palindrome/version"
+class String
 
-module MclementPalindrome
-  class Error < StandardError; end
-  # Your code goes here...
+  # Returns true for a palindrome, false otherwise.
+  def palindrome?
+    processed_content == processed_content.reverse
+  end
+
+  private
+
+  # Return content for palindrome testing
+  def processed_content
+    scan(/[a-z]/i).join.downcase
+  end
 end
